@@ -1,0 +1,415 @@
+<div class="social-login-container">
+    <div class="social-login-header text-center mb-3">
+        <h5 class="social-login-title">{{ text_social_login }}</h5>
+        <p class="social-login-subtitle text-muted small">{{ text_secure_login }}</p>
+    </div>
+    
+    <div class="social-login-buttons">
+        <div class="row g-2">
+            <div class="col-12">
+                <a href="{{ facebook_login_url }}" class="btn btn-facebook btn-lg w-100 d-flex align-items-center justify-content-center" 
+                   onclick="showLoading(this)">
+                    <i class="fab fa-facebook-f me-2"></i>
+                    <span class="btn-text">{{ text_login_facebook }}</span>
+                    <span class="btn-loading d-none">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        {{ text_connecting }}
+                    </span>
+                </a>
+            </div>
+            
+            <div class="col-12">
+                <a href="{{ google_login_url }}" class="btn btn-google btn-lg w-100 d-flex align-items-center justify-content-center"
+                   onclick="showLoading(this)">
+                    <i class="fab fa-google me-2"></i>
+                    <span class="btn-text">{{ text_login_google }}</span>
+                    <span class="btn-loading d-none">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        {{ text_connecting }}
+                    </span>
+                </a>
+            </div>
+            
+            <div class="col-12">
+                <a href="{{ line_login_url }}" class="btn btn-line btn-lg w-100 d-flex align-items-center justify-content-center"
+                   onclick="showLoading(this)">
+                    <i class="fab fa-line me-2"></i>
+                    <span class="btn-text">{{ text_login_line }}</span>
+                    <span class="btn-loading d-none">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        {{ text_connecting }}
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="social-login-divider text-center my-4">
+        <hr class="social-divider">
+        <span class="social-divider-text bg-white px-3 text-muted">{{ text_or_login_email }}</span>
+    </div>
+    
+    <div class="social-login-benefits d-none d-md-block">
+        <p class="small text-muted text-center mb-2">{{ text_social_login_help }}</p>
+        <div class="row text-center">
+            <div class="col-4">
+                <i class="fas fa-shield-alt text-success mb-1"></i>
+                <p class="small text-muted mb-0">安全</p>
+            </div>
+            <div class="col-4">
+                <i class="fas fa-bolt text-warning mb-1"></i>
+                <p class="small text-muted mb-0">快速</p>
+            </div>
+            <div class="col-4">
+                <i class="fas fa-key text-info mb-1"></i>
+                <p class="small text-muted mb-0">便利</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.social-login-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.social-login-title {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.social-login-subtitle {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.social-login-buttons .btn {
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-login-buttons .btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.social-login-buttons .btn:hover:before {
+    left: 100%;
+}
+
+.btn-facebook {
+    background: linear-gradient(135deg, #1877f2 0%, #166fe5 100%);
+    color: white;
+    box-shadow: 0 4px 15px 0 rgba(24, 119, 242, 0.3);
+}
+
+.btn-facebook:hover {
+    background: linear-gradient(135deg, #166fe5 0%, #1460d0 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(24, 119, 242, 0.4);
+}
+
+.btn-google {
+    background: linear-gradient(135deg, #db4437 0%, #c23321 100%);
+    color: white;
+    box-shadow: 0 4px 15px 0 rgba(219, 68, 55, 0.3);
+}
+
+.btn-google:hover {
+    background: linear-gradient(135deg, #c23321 0%, #a52914 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(219, 68, 55, 0.4);
+}
+
+.btn-line {
+    background: linear-gradient(135deg, #00b900 0%, #009900 100%);
+    color: white;
+    box-shadow: 0 4px 15px 0 rgba(0, 185, 0, 0.3);
+}
+
+.btn-line:hover {
+    background: linear-gradient(135deg, #009900 0%, #007700 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(0, 185, 0, 0.4);
+}
+
+.social-divider {
+    margin: 0;
+    border-top: 1px solid #dee2e6;
+    position: relative;
+}
+
+.social-divider-text {
+    position: relative;
+    top: -12px;
+    font-size: 0.85rem;
+    background: #f8f9fa !important;
+    color: #6c757d;
+    padding: 0 1rem;
+}
+
+.social-login-benefits {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.social-login-benefits i {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-login-benefits p {
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.btn[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn[disabled]:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 2px;
+}
+
+/* 行動裝置優化 */
+@media (max-width: 576px) {
+    .social-login-container {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 0.375rem;
+    }
+    
+    .social-login-title {
+        font-size: 1.1rem;
+    }
+    
+    .social-login-buttons .btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+    }
+    
+    .social-login-benefits {
+        display: none !important;
+    }
+    
+    .social-divider-text {
+        font-size: 0.8rem;
+        padding: 0 0.75rem;
+    }
+}
+
+/* 平板裝置優化 */
+@media (min-width: 577px) and (max-width: 768px) {
+    .social-login-container {
+        padding: 1.25rem;
+    }
+    
+    .social-login-buttons .btn {
+        font-size: 0.95rem;
+    }
+}
+
+/* 深色模式支援 */
+@media (prefers-color-scheme: dark) {
+    .social-login-container {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .social-login-title {
+        color: #f7fafc;
+    }
+    
+    .social-login-subtitle {
+        color: #a0aec0;
+    }
+    
+    .social-divider {
+        border-color: #4a5568;
+    }
+    
+    .social-divider-text {
+        background: #2d3748 !important;
+        color: #a0aec0;
+    }
+}
+
+/* 載入動畫改進 */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.btn-loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* 無障礙改進 */
+.social-login-buttons .btn:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.social-login-buttons .btn:focus-visible {
+    outline: 2px solid #005fcc;
+    outline-offset: 2px;
+}
+
+/* 印刷樣式 */
+@media print {
+    .social-login-container {
+        display: none;
+    }
+}
+</style>
+
+<script>
+function showLoading(button) {
+    // 防止重複點擊
+    if (button.disabled) {
+        return false;
+    }
+    
+    // 禁用按鈕
+    button.disabled = true;
+    button.style.pointerEvents = 'none';
+    
+    // 隱藏按鈕文字，顯示載入動畫
+    const btnText = button.querySelector('.btn-text');
+    const btnLoading = button.querySelector('.btn-loading');
+    
+    if (btnText && btnLoading) {
+        btnText.classList.add('d-none');
+        btnLoading.classList.remove('d-none');
+    }
+    
+    // 添加載入樣式
+    button.classList.add('loading');
+    
+    // 記錄開始時間
+    const startTime = Date.now();
+    
+    // 15秒後自動恢復（防止卡住）
+    const timeoutId = setTimeout(function() {
+        restoreButton(button);
+    }, 15000);
+    
+    // 儲存 timeout ID 以便可能的清除
+    button.dataset.timeoutId = timeoutId;
+    
+    // 監聽頁面可見性變化（用戶切換分頁時）
+    const handleVisibilityChange = function() {
+        if (document.visibilityState === 'visible') {
+            // 如果用戶回到分頁且已經過了一段時間，恢復按鈕
+            if (Date.now() - startTime > 5000) {
+                restoreButton(button);
+            }
+        }
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // 儲存事件處理器以便清除
+    button.visibilityHandler = handleVisibilityChange;
+    
+    return true;
+}
+
+function restoreButton(button) {
+    // 清除 timeout
+    if (button.dataset.timeoutId) {
+        clearTimeout(button.dataset.timeoutId);
+        delete button.dataset.timeoutId;
+    }
+    
+    // 清除可見性事件監聽器
+    if (button.visibilityHandler) {
+        document.removeEventListener('visibilitychange', button.visibilityHandler);
+        delete button.visibilityHandler;
+    }
+    
+    // 恢復按鈕狀態
+    button.disabled = false;
+    button.style.pointerEvents = '';
+    button.classList.remove('loading');
+    
+    const btnText = button.querySelector('.btn-text');
+    const btnLoading = button.querySelector('.btn-loading');
+    
+    if (btnText && btnLoading) {
+        btnText.classList.remove('d-none');
+        btnLoading.classList.add('d-none');
+    }
+}
+
+// 處理瀏覽器返回/前進時恢復按鈕狀態
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted || performance.navigation.type === 2) {
+        // 頁面從快取載入或用戶使用瀏覽器返回按鈕
+        document.querySelectorAll('.social-login-buttons .btn').forEach(function(btn) {
+            restoreButton(btn);
+        });
+    }
+});
+
+// 處理頁面載入完成
+document.addEventListener('DOMContentLoaded', function() {
+    // 確保所有按鈕都處於正常狀態
+    document.querySelectorAll('.social-login-buttons .btn').forEach(function(btn) {
+        restoreButton(btn);
+    });
+});
+
+// 處理網路錯誤
+window.addEventListener('online', function() {
+    // 網路恢復時恢復所有按鈕
+    document.querySelectorAll('.social-login-buttons .btn[disabled]').forEach(function(btn) {
+        restoreButton(btn);
+    });
+});
+
+// 防止表單重複提交
+window.addEventListener('beforeunload', function() {
+    document.querySelectorAll('.social-login-buttons .btn').forEach(function(btn) {
+        btn.disabled = true;
+    });
+});
+</script>
